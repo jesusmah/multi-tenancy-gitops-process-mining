@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-cp4a-cluster-instance
+  annotations:
+    argocd.argoproj.io/sync-wave: "250"
+  labels:
+    gitops.tier.group: ibm-cloudpak
+spec:
+  destination:
+    namespace: cloudpak
+    server: https://kubernetes.default.svc
+  project: services
+  source:
+    path: shared/config/cp4a/cp4acluster/cp4a-resources
+    repoURL: https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apps.git
+    targetRevision: master
+    helm:
+      values: |
+        serviceaccount:
+          argocd_application_controller: argocd-cluster-argocd-application-controller
+        spec:
+          shared_configuration:
+            sc_deployment_hostname_suffix: cloudpak.gitops3-cp4ba-6ccd7f378ae819553d37d5f2ee142bd6-0000.tor01.containers.appdomain.cloud
+            sc_deployment_platform: ROKS
+        storageclass:
+          gold: cp4a-file-retain-gold-gid
+          silver: cp4a-file-retain-silver-gid
+          bronze: cp4a-file-retain-bronze-gid                  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
