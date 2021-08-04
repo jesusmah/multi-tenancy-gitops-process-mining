@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-odf
+  annotations:
+    argocd.argoproj.io/sync-wave: "110"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: openshift-storage
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    path: ibm-odf
+    repoURL: https://github.com/cloud-native-toolkit/multi-tenancy-gitops-infra.git
+    targetRevision: master
+    helm:
+      values: |
+        ocs-operator:
+          ocs:
+            storageClass: ocs-initial
+            sizeOSD: 512Gi
+            worker_ip_1: 
+            worker_ip_2: 
+            worker_ip_3: 
+            billingType: hourly
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

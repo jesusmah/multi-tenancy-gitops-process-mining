@@ -27,21 +27,32 @@ spec:
                 displayName: IBMCS Operators
                 publisher: IBM
                 sourceType: grpc
-                image: docker.io/ibmcom/ibm-common-service-catalog:latest
+                image: docker.io/ibmcom/ibm-common-service-catalog:3.8
                 updateStrategy:
                   registryPoll:
                     interval: 45m
 
-            ibmoperators:
-              name: ibm-operator-catalog
+            automationfoundation:
+              name: iaf-core-operators
               catalog:
-                displayName: "IBM Operator Catalog"
+                displayName: IAF Core Operators
                 publisher: IBM
                 sourceType: grpc
-                image: docker.io/ibmcom/ibm-operator-catalog
+                image: icr.io/cpopen/ibm-automation-foundation-core-catalog:1.1.0
                 updateStrategy:
                   registryPoll:
-                    interval: 45m          
+                    interval: 45m
+            
+            processmining:
+              name: ibm-automation-processminings
+              catalog:
+                displayName: IBM ProcessMining Operators
+                publisher: IBM
+                sourceType: grpc
+                image: icr.io/cpopen/processmining-operator-catalog:1.0.2
+                updateStrategy:
+                  registryPoll:
+                    interval: 45m
   syncPolicy:
     automated:
       prune: true

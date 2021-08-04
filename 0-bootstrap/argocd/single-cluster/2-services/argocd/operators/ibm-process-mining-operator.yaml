@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ibm-automation-foundation-core-operator
+  name: ibm-process-mining-operator
   annotations:
-    argocd.argoproj.io/sync-wave: "230"
+    argocd.argoproj.io/sync-wave: "240"
   labels:
     gitops.tier.group: ibm-cloudpak
   finalizers:
@@ -14,21 +14,21 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: services
   source:
-    path: operators/ibm-automation-foundation-core-operator
+    path: operators/ibm-process-mining
     repoURL: https://github.com/cloud-native-toolkit/multi-tenancy-gitops-services.git
     targetRevision: master
     helm:
       values: |
-        ibm-automation-foundation-core-operator:
+        ibm-process-mining-operator:
           subscriptions:
-            ibmautomation:
-              name: ibm-automation-foundation-core
+            ibmprocessmining:
+              name: ibm-process-mining
               subscription:
-                channel: v1.1
+                channel: v1.0
                 installPlanApproval: Automatic
-                name: ibm-automation-core
-                source: iaf-core-operators
-                sourceNamespace: openshift-marketplace
+                name: ibm-automation-processmining
+                source: ibm-automation-processminings
+                sourceNamespace: openshift-marketplace        
   syncPolicy:
     automated:
       prune: true

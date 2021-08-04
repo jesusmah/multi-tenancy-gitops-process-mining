@@ -234,4 +234,17 @@ rules:
     resources:
       - operandrequests/status
     verbs:
-      - get      
+      - get
+  # OCS
+  - apiGroups:
+      - ocs.ibm.io
+    resources:
+      - ocsclusters
+    verbs:
+      - "*"
+  - apiGroups:                  # Process Mining
+      - processmining.ibm.com   # Process Mining specific API groups
+    resources:
+      - '*'
+    verbs:
+      - '*'   

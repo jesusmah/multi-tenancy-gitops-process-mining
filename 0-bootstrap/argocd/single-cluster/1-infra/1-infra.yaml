@@ -5,7 +5,7 @@ metadata:
   name: infra
 spec:
   sourceRepos:
-  - https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apic.git
+  - https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-process-mining.git
   - https://github.com/cloud-native-toolkit/multi-tenancy-gitops-infra.git
   destinations:
   - namespace: cloudpak
@@ -28,6 +28,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: instana-agent
     server: https://kubernetes.default.svc
+  - namespace: openshift-storage
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: ""
     kind: Namespace
@@ -39,6 +41,8 @@ spec:
     kind: ConsoleNotification
   - group: "console.openshift.io"
     kind: ConsoleLink
+  - group: "ocs.ibm.io"
+    kind: OcsCluster 
   - group: "storage.k8s.io"
     kind: StorageClass
   roles:
@@ -63,7 +67,7 @@ spec:
   project: default
   source:
     path: 0-bootstrap/argocd/single-cluster/1-infra
-    repoURL: https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-apic.git
+    repoURL: https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-process-mining.git
     targetRevision: kustomize
   syncPolicy:
     automated:

@@ -14,20 +14,26 @@ resources:
 
 # IBM Software - Cloud Pak for Business Automation
 #- argocd/operators/ibm-cp4a-operator.yaml
-#- argocd/operators/ibm-automation-foundation-core-operator.yaml
+- argocd/operators/ibm-automation-foundation-core-operator.yaml
 #- argocd/instances/cp4a-cluster-instance.yaml
 
 # Pre-req for Cloud Pak for Business Automation Operator
 #- argocd/instances/cp4a-operator-pvc.yaml
 #- argocd/instances/cp4a-operator-rolebinding.yaml
-# IBM Entitlement Key for Cloud Pak for Business Automation Operator
-#- argocd/instances/shared-secrets.yaml
+
+# IBM Entitlement Key for Cloud Pak for IBM Software
+- argocd/instances/shared-secrets.yaml
 
 # IBM Foundations / Common Services
-#- argocd/operators/ibm-foundations.yaml
+- argocd/operators/ibm-foundations.yaml
 
 # IBM Catalogs
-#- argocd/operators/ibm-catalogs.yaml
+- argocd/operators/ibm-catalogs.yaml
+
+# IBM Process Mining
+- argocd/operators/ibm-process-mining-operator.yaml
+# IBM Process Mining instance
+- argocd/instances/ibm-pm-instance.yaml
 
 # Required for IBM MQ
 #- argocd/instances/openldap.yaml

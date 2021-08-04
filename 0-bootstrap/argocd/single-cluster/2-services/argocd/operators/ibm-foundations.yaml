@@ -10,7 +10,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: cloudpak
+    namespace: openshift-operators
     server: 'https://kubernetes.default.svc'
   project: services
   source:
@@ -22,13 +22,11 @@ spec:
         ibm-common-services:
           subscriptions:
             subscription:
-              channel: stable-v1
-              config:
-                resources: {}
+              channel: v3
               installPlanApproval: Automatic
               name: ibm-common-service-operator
-              source: opencloud-operators
-              sourceNamespace: openshift-marketplace          
+              source: ibm-operator-catalog
+              sourceNamespace: openshift-marketplace      
   syncPolicy:
     automated:
       prune: true
