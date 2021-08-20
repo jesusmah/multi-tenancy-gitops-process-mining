@@ -41,10 +41,6 @@ spec:
     kind: ConsoleNotification
   - group: "console.openshift.io"
     kind: ConsoleLink
-  - group: "ocs.ibm.io"
-    kind: OcsCluster 
-  - group: "storage.k8s.io"
-    kind: StorageClass
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
@@ -68,7 +64,7 @@ spec:
   source:
     path: 0-bootstrap/argocd/single-cluster/1-infra
     repoURL: https://github.com/cloud-native-toolkit-demos/multi-tenancy-gitops-process-mining.git
-    targetRevision: kustomize
+    targetRevision: ocp4.7-vpc
   syncPolicy:
     automated:
       prune: true

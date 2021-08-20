@@ -16,7 +16,9 @@ resources:
 #- argocd/refarch-machinesets.yaml
 #- argocd/storageclass-cp4a.yaml
 # OpenShift Container Storage (OCS)
-- argocd/ibm-odf.yaml
+## From ROKS 4.7 onwards, ODF (previously called OCS)
+## gets installed automatically from the IBM Cloud web console.
+#- argocd/ibm-odf.yaml
 
 
 
