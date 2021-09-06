@@ -16,7 +16,7 @@ resources:
 #- argocd/refarch-machinesets.yaml
 #- argocd/storageclass-cp4a.yaml
 # OpenShift Container Storage (OCS)
-- argocd/ibm-odf.yaml
+# - argocd/ibm-odf.yaml
 
 
 
